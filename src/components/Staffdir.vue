@@ -1,41 +1,16 @@
 <template>
   <div class="div" >
       
-      <div v-on:keyup="isVisible=true"
-           v-on:keyup.delete="isVisible=false"
-           v-on:keyup.enter="isVisible=false"
-           v-on:keyup.tab="isVisible=false"
-           v-on:keyup.esc="isVisible=false"
-           v-on:keyup.space="isVisible=false"
-           v-on:keyup.up="isVisible=false"
-           v-on:keyup.down="isVisible=false"
-           v-on:keyup.left="isVisible=false"
-           v-on:keyup.right="isVisible=false"
+      <div 
         class="control">
-    <input type="text" id="search-site" v-model.trim="search" placeholder=" Search" @keyup="parseDoc"> </div>
+    <input type="text" id="search-site" v-model.trim="search" placeholder=" Search" @keyup.prevent="parseDoc"> </div>
     <br>
     <br>
 
-    <!-- <div id="dropdown">
-        <select v-model="selectedValue">
-            <option disabled value="">Departments</option>
-            <option v-for="(Dept, index) in filtered" :value="Dept" :key="index">{{Dept}}</option>
-            </select>
-            
-    </div> -->
-
-    <!-- <div id="dropdown">
-        <select v-model="selectedValue" @change="onChange($event)">
-            <option disabled value="">Departments</option>
-            <option v-for="(Dept, index) in filtered" :value="Dept" :key="index">{{Dept}}</option>
-            </select>
-            <span>{{selectedValue}}</span>
-            
-    </div> -->
 
      <div id="dropdown" style="padding-bottom:2rem;">
         <select v-model="selectedValue" @change="onChange($event)">
-            <option value="">ALL</option>
+            <option value="">All Departments</option>
             <option v-for="(Dept, index) in filtered" :value="Dept" :key="index">{{Dept}}</option>
             </select>
             <div class="container">
@@ -55,7 +30,7 @@
     </div>
 
 <br>
-    <div v-if="isVisible" id="hide" class="container">
+    <div id="hide" class="container">
     <ul v-if="info" style="list-style-type: none;">
         <li v-for="(item, index) in info" :key="index" id="list-items">
             <b>Name: </b>{{item.Last_Name}} , 
@@ -105,7 +80,7 @@ if(this.selectedValue == ""){
 // if(event.target.value == this.selectedValue){
 //     console.log("Hi")
 // }
-     
+
 
         
               
@@ -139,6 +114,12 @@ if(this.selectedValue == ""){
 
 
     },
+
+    // watch:{
+    //     keyword(){
+    //         this.parseDoc()
+    //     }
+    // },
 
 
     created(){
