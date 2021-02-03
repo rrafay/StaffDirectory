@@ -155,6 +155,7 @@ if(this.selectedValue == "All Departments"){
     
     padding-top: 4rem;
     padding-bottom: 4rem;
+    padding-left: 4rem;
     margin:0 auto;
     width: 70rem;
     background-color: #e5e5e5;
