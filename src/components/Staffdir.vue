@@ -3,14 +3,14 @@
       
       <div 
         class="control">
-    <input type="text" id="search-site" v-model.trim="search" placeholder=" Search" @keyup.prevent="parseDoc"> </div>
+    <input type="text" id="search-site" v-model.trim="search" placeholder=" Search" @keyup.prevent="parseDoc()"> </div>
     <br>
     <br>
 
 
      <div id="dropdown" style="padding-bottom:2rem;">
         <select v-model="selectedValue" @change="onChange($event)">
-            <option value="">All Departments</option>
+            <option value="All Departments">All Departments</option>
             <option v-for="(Dept, index) in filtered" :value="Dept" :key="index">{{Dept}}</option>
             </select>
             <div class="container">
@@ -49,8 +49,8 @@
     
 
     </div>
- <div class="container" v-if="info == ''">
- <p>No Result Found</p>
+ <div class="container-2" v-if="info == ''">
+ <p style="font-size: 1.2rem"> Could not find anything 😥 😪</p>
  </div>
   </div>
 </template>
@@ -76,10 +76,12 @@ export default {
 onChange(event) {
 
 if(event.target.value == this.selectedValue){
- this.values = this.info.filter(info => info.Department === this.selectedValue)
-if(this.selectedValue == ""){
-    this.values = ""
+ this.info = this.info.filter(info => info.Department === this.selectedValue)
+ 
+if(this.selectedValue == "All Departments"){
+    this.parseDoc()
 }
+
 }
 // if(event.target.value == this.selectedValue){
 //     console.log("Hi")
@@ -96,12 +98,12 @@ if(this.selectedValue == ""){
         header: true,
         download: true,
         complete: (results) => {
- 
+            
             if(this.search){
-                this.info = results.data.filter(info => info.Preferred_Name.toLowerCase().includes(this.search.toLowerCase())
-                )
+                this.info = results.data.filter(info => info.Preferred_Name.toLowerCase().includes(this.search.toLowerCase()))
 
             } 
+            
             
             else{
                 this.info = results.data
@@ -149,6 +151,15 @@ if(this.selectedValue == ""){
     font-family: 'PT Sans', sans-serif;
 }
 
+.container-2{
+    
+    padding-top: 4rem;
+    padding-bottom: 4rem;
+    margin:0 auto;
+    width: 70rem;
+    background-color: #e5e5e5;
+    text-align: left;
+}
 
 .container{
     
