@@ -46,8 +46,12 @@
 
         </li>
     </ul>
+    
+
     </div>
-   
+ <div class="container" v-if="info == ''">
+ <p>No Result Found</p>
+ </div>
   </div>
 </template>
 
@@ -92,13 +96,13 @@ if(this.selectedValue == ""){
         header: true,
         download: true,
         complete: (results) => {
-            
-            // console.log('Row: ', results.data)
+ 
             if(this.search){
                 this.info = results.data.filter(info => info.Preferred_Name.toLowerCase().includes(this.search.toLowerCase())
                 )
 
             } 
+            
             else{
                 this.info = results.data
             }
