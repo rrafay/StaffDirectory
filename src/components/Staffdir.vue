@@ -50,7 +50,9 @@
 
     </div>
  <div class="container-2" v-if="info == ''">
- <p style="font-size: 1.2rem"> Could not find anything 😥 😪</p>
+ 
+     <img :src=logo style="height: 1.8rem; width:auto; position:relative; left:0rem; top:0.3rem;"> <span>No Results Found</span> 
+
  </div>
   </div>
 </template>
@@ -62,6 +64,7 @@ export default {
     name: 'Staffdir',
   data() {
     return {
+      logo: require('@/assets/musearch.svg'),
       info: [],
       search: '',
       isVisible: false,
@@ -170,7 +173,7 @@ if(this.selectedValue == "All Departments"){
 
 .container-2{
     
-    padding-top: 4rem;
+    padding-top: 3rem;
     padding-bottom: 4rem;
     padding-left: 4rem;
     margin:0 auto;
