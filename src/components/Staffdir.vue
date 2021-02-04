@@ -105,9 +105,10 @@ if(this.selectedValue == "All Departments"){
                     container.title = item.Job_Title
                     container.location = item.Office_Location
                     container.displayName = item.Display_Name
+                    container.prefName = item.Preferred_Name
 
-                    container.newAge = container.firstName.concat(' ', container.department, ' ', container.firstName, ' ', container.email, ' ', container.email,
-                    ' ', container.phone, ' ', container.location) 
+                    container.newAge = container.firstName.concat(' ', container.department, ' ', container.prefName, ' ', container.email, ' ', container.email,
+                    ' ', container.phone, ' ', container.location, ' ', container.title) 
                     return container
                 })
             if(this.search){
