@@ -11,15 +11,15 @@
      <div id="dropdown" style="padding-bottom:2rem;">
         <select v-model="selectedValue" @change="onChange($event)">
             <option value="All Departments">All Departments</option>
-            <option v-for="(Dept, index) in filtered" :value="Dept" :key="index">{{Dept}}</option>
+            <option v-for="(dept, index) in filtered" :value="dept" :key="index">{{dept}}</option>
             </select>
-            <div class="container">
+            <div>
             <ul style="list-style-type: none;">
             <li v-for="(names, index) in values" :key="index" id="list-items">
                 <b>Name: </b>{{names.Last_Name}} , 
              {{ names.First_Name }} 
              <br> 
-            <b>Department: </b>{{names.Department}}<br>
+            <b>Department: </b>{{names.department}}<br>
             <b>Office: </b>{{names.Office_Location}}<br>
             <b>Email: </b>{{names.E_Mail}}<br> 
             <b>Title: </b>{{names.Job_Title}}<br>
@@ -33,14 +33,14 @@
     <div id="hide" class="container">
     <ul v-if="info" style="list-style-type: none;">
         <li v-for="(item, index) in info" :key="index" id="list-items">
-            <b>Name: </b>{{item.Last_Name}} , 
-             {{ item.First_Name }} 
+            <b>Name: </b> 
+             {{ item.displayName }} 
              <br> 
-            <b>Department: </b>{{item.Department}}<br>
-            <b>Office: </b>{{item.Office_Location}}<br>
-            <b>Email: </b>{{item.E_Mail}}<br> 
-            <b>Title: </b>{{item.Job_Title}}<br>
-            <b>Extension: </b>{{item.Work_Phone}}<br>
+            <b>Department: </b>{{item.department}}<br>
+            <b>Office: </b>{{item.location}}<br>
+            <b>Email: </b>{{item.email}}<br> 
+            <b>Title: </b>{{item.title}}<br>
+            <b>Extension: </b>{{item.phone}}<br>
              
              
 
@@ -76,16 +76,13 @@ export default {
 onChange(event) {
 
 if(event.target.value == this.selectedValue){
- this.info = this.info.filter(info => info.Department === this.selectedValue)
+ this.info = this.info.filter(info => info.department === this.selectedValue)
  
 if(this.selectedValue == "All Departments"){
     this.parseDoc()
 }
 
 }
-// if(event.target.value == this.selectedValue){
-//     console.log("Hi")
-// }
 
 
         
@@ -98,16 +95,35 @@ if(this.selectedValue == "All Departments"){
         header: true,
         download: true,
         complete: (results) => {
-            
+            const newUsers = results.data.map(item => {
+                    const container = {}
+                    container.firstName = item.First_Name
+                    container.lastName = item.Last_Name
+                    container.department = item.Department
+                    container.email = item.E_Mail
+                    container.phone = item.Work_Phone
+                    container.title = item.Job_Title
+                    container.location = item.Office_Location
+                    container.displayName = item.Display_Name
+
+                    container.newAge = container.firstName.concat(' ', container.department, ' ', container.firstName, ' ', container.email, ' ', container.email,
+                    ' ', container.phone, ' ', container.location) 
+                    return container
+                })
             if(this.search){
-                this.info = results.data.filter(info => info.Preferred_Name.toLowerCase().includes(this.search.toLowerCase()))
+                
+                //console.log(results.data)
+                // console.log(newUsers)
+                this.info = newUsers.filter(info => info.newAge.toLowerCase().includes(this.search.toLowerCase())) 
+                 
 
             } 
             
             
             else{
-                this.info = results.data
+                this.info = newUsers
             }
+            
         
     },
         
@@ -134,7 +150,7 @@ if(this.selectedValue == "All Departments"){
 
     computed:{
         filtered(){
-            return[...new Set(this.info.map(({Department}) => Department).sort())]
+            return[...new Set(this.info.map(({department}) => department).sort())]
         }
     }
 };
