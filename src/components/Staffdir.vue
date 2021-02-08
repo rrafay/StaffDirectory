@@ -13,19 +13,20 @@
             <option value="All Departments">All Departments</option>
             <option v-for="(dept, index) in filtered" :value="dept" :key="index">{{dept}}</option>
             </select>
-            <div>
+            <!-- <div>
             <ul style="list-style-type: none;">
             <li v-for="(names, index) in values" :key="index" id="list-items">
+                <img class="images" :src="`${names.PHOTO}`"> 
                 <b>Name: </b>{{names.Last_Name}} , 
              {{ names.First_Name }} 
               
-            <b>Department: </b>{{names.department}}
+            <b>Department: </b>{{names.Department}}
             <b>Office: </b>{{names.Office_Location}}
             <b>Email: </b>{{names.E_Mail}}
             <b>Title: </b>{{names.Job_Title}}
             <b>Extension: </b>{{names.Work_Phone}}
                 </li>
-                </ul></div>
+                </ul></div> -->
             
     </div>
 
@@ -63,6 +64,7 @@
 <script>
 
 import Papa from "papaparse"
+var newUsers;
 export default {
     name: 'Staffdir',
   data() {
@@ -94,14 +96,15 @@ if(this.selectedValue == "All Departments"){
         
               
 }
+
 ,
      parseDoc(){
             let url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTJcy5_CZ5q_ozBQ7Aut6enMp92BoH-AuBTPDtblhE1NViYXMxFAfxW2rXzTs6u9_YhPOOeGv0XXfa8/pub?output=csv"
         Papa.parse(url, {
         header: true,
-        download: true,
+        download:true,
         complete: (results) => {
-            const newUsers = results.data.map(item => {
+             newUsers = results.data.map(item => {
                     const container = {}
                     container.firstName = item.First_Name
                     container.lastName = item.Last_Name
@@ -113,7 +116,7 @@ if(this.selectedValue == "All Departments"){
                     container.displayName = item.Display_Name
                     container.prefName = item.Preferred_Name
                     container.pics = item.PHOTO
-                    container.newAge = container.firstName.concat(' ', container.department, ' ', container.prefName, ' ', container.email, ' ', container.email,
+                    container.newAge = container.firstName.concat(' ', container.department, ' ', container.prefName, ' ', container.email, ' ',
                     ' ', container.phone, ' ', container.location, ' ', container.title) 
                     return container
                 })
