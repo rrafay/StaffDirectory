@@ -10,8 +10,9 @@
 </template>
 
 <style>
+@import url('https://fonts.googleapis.com/css2?family=Fira+Sans+Condensed:ital,wght@0,300;0,400;0,700;1,300;1,400;1,700&display=swap');
 #app {
-  font-family: Avenir, Helvetica, Arial, sans-serif;
+  font-family: 'Fira Sans Condensed', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
@@ -29,6 +30,6 @@
 }
 
 #nav a.router-link-exact-active {
-  color: #faa819 ;
+  color: #f5a800 ;
 }
 </style>

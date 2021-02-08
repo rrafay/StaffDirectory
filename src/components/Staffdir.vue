@@ -18,12 +18,12 @@
             <li v-for="(names, index) in values" :key="index" id="list-items">
                 <b>Name: </b>{{names.Last_Name}} , 
              {{ names.First_Name }} 
-             <br> 
-            <b>Department: </b>{{names.department}}<br>
-            <b>Office: </b>{{names.Office_Location}}<br>
-            <b>Email: </b>{{names.E_Mail}}<br> 
-            <b>Title: </b>{{names.Job_Title}}<br>
-            <b>Extension: </b>{{names.Work_Phone}}<br>
+              
+            <b>Department: </b>{{names.department}}
+            <b>Office: </b>{{names.Office_Location}}
+            <b>Email: </b>{{names.E_Mail}}
+            <b>Title: </b>{{names.Job_Title}}
+            <b>Extension: </b>{{names.Work_Phone}}
                 </li>
                 </ul></div>
             
@@ -31,27 +31,30 @@
 
 <br>
     <div id="hide" class="container">
-    <ul v-if="info" style="list-style-type: none;">
+    <ul v-if="info" style="list-style-type: none; 
+        margin:0;
+        padding:0;" id = "list-parent">
         <li v-for="(item, index) in info" :key="index" id="list-items">
-            <b>Name: </b> 
-             {{ item.displayName }} 
-             <br> 
-            <b>Department: </b>{{item.department}}<br>
-            <b>Office: </b>{{item.location}}<br>
-            <b>Email: </b>{{item.email}}<br> 
-            <b>Title: </b>{{item.title}}<br>
-            <b>Extension: </b>{{item.phone}}<br>
-             
+            <img class="images" :src="`${item.pics}`"> 
+           <div class="names"> 
+               <h1><b> {{ item.displayName }}</b></h1> 
+            <p>{{item.department}}</p>
+            <p>{{item.title}}</p>
+            <p><a v-bind:href="`${item.email}`">{{item.email}}</a></p>
+           <p> <b>{{item.phone}}</b></p>
+            <p>{{item.location}}</p>
+            
+             </div>
              
 
         </li>
     </ul>
-    
+   
 
     </div>
  <div class="container-2" v-if="info == ''">
  
-     <img :src=logo style="height: 1.8rem; width:auto; position:relative; left:0rem; top:0.3rem;"> <span>No Results Found</span> 
+     <img :src=logo style="height: 1.8rem; width:auto; position:relative; left:0rem; top:0.5rem;"> <span>No Results Found</span> 
 
  </div>
   </div>
@@ -109,14 +112,14 @@ if(this.selectedValue == "All Departments"){
                     container.location = item.Office_Location
                     container.displayName = item.Display_Name
                     container.prefName = item.Preferred_Name
-
+                    container.pics = item.PHOTO
                     container.newAge = container.firstName.concat(' ', container.department, ' ', container.prefName, ' ', container.email, ' ', container.email,
                     ' ', container.phone, ' ', container.location, ' ', container.title) 
                     return container
                 })
             if(this.search){
                 
-                //console.log(results.data)
+                // console.log(results.data)
                 // console.log(newUsers)
                 this.info = newUsers.filter(info => info.newAge.toLowerCase().includes(this.search.toLowerCase())) 
                  
@@ -165,11 +168,15 @@ if(this.selectedValue == "All Departments"){
 </script>
 
 <style>
-@import url('http://fonts.googleapis.com/css?family=PT+Sans+Narrow:400,700');
-@import url('https://fonts.googleapis.com/css2?family=PT+Sans&display=swap');
-#app{
-    font-family: 'PT Sans', sans-serif;
+
+p {
+   margin: 0px;
+   padding: 0px;
 }
+h1{
+    color: #1a5632;
+}
+
 
 .container-2{
     
@@ -177,27 +184,75 @@ if(this.selectedValue == "All Departments"){
     padding-bottom: 4rem;
     padding-left: 4rem;
     margin:0 auto;
-    width: 70rem;
-    background-color: #e5e5e5;
-    text-align: left;
+    width: auto;
+    background-color: #90D5AC;
+   
 }
 
+/* NEW */
+
 .container{
+    /* display: flex; */
     
-    /* padding-top: 2rem; */
-    margin:0 auto;
-    width: 70rem;
-    background-color: #e5e5e5;
+    
+}
+
+
+.names{
+    display: flex; 
+    flex-direction: column;
+    margin-left: 30rem; 
+     
+     
+}
+
+.images{
+    width: 15rem;
+    height: auto;
+    /* padding-bottom: 2rem; */
+   
+}
+
+#list-parent{
+    margin: 0px;
+   padding: 0px;
 }
 #list-items{
-    text-align: left;
+    text-align: center;
+    margin-top: 1.5rem;
+    display: flex;
+    background-color: #90D5AC;
+    width: 100%;   
+}
+
+#list-items:nth-child(even){
+    background-color: white;
+}
+
+
+@media screen and (max-width: 680px) {
+    #list-items{
+    text-align: center;
     padding-bottom: 2.5rem;
+    display: block;
+    padding-right: 2.5rem;
+}
+
+.names{
+    display: block;
+   margin-left: 0.5rem;
+     
+     
+}
+
+
+
 }
 
 #search-site {
     height: 1.5rem;
     background-color: #eeeeee ;
-    width: 40rem;
+    width: auto;
     border-radius: 0.9rem;
     border:0;
 }
