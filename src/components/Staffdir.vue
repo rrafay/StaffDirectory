@@ -36,14 +36,16 @@
         margin:0;
         padding:0;" id = "list-parent">
         <li v-for="(item, index) in info" :key="index" id="list-items">
-            <img class="images" :src="`${item.pics}`"> 
+            <v-lazy-image class="images" :src="`${item.pics}`" /> 
            <div class="names"> 
                <h1><b> {{ item.displayName }}</b></h1> 
+               <div class="desc">
             <p>{{item.department}}</p>
             <p>{{item.title}}</p>
             <p><a v-bind:href="`${item.email}`">{{item.email}}</a></p>
            <p> <b>{{item.phone}}</b></p>
             <p>{{item.location}}</p>
+            </div>
             
              </div>
              
@@ -64,11 +66,16 @@
 <script>
 
 import Papa from "papaparse"
-var newUsers;
+import VLazyImage from "v-lazy-image"
+
 export default {
     name: 'Staffdir',
+    components:{
+        VLazyImage
+    },
   data() {
     return {
+      VLazyImage,
       logo: require('@/assets/musearch.svg'),
       info: [],
       search: '',
@@ -104,7 +111,7 @@ if(this.selectedValue == "All Departments"){
         header: true,
         download:true,
         complete: (results) => {
-             newUsers = results.data.map(item => {
+             const newUsers = results.data.map(item => {
                     const container = {}
                     container.firstName = item.First_Name
                     container.lastName = item.Last_Name
@@ -188,7 +195,7 @@ h1{
     padding-left: 4rem;
     margin:0 auto;
     width: auto;
-    background-color: #90D5AC;
+    background-color: #74befc;
    
 }
 
@@ -204,6 +211,7 @@ h1{
 .names{
     display: flex; 
     flex-direction: column;
+    
     margin-left: 30rem; 
      
      
@@ -216,16 +224,19 @@ h1{
    
 }
 
+
+
 #list-parent{
     margin: 0px;
    padding: 0px;
 }
 #list-items{
-    text-align: center;
+    text-align: left;
     margin-top: 1.5rem;
     display: flex;
-    background-color: #90D5AC;
-    width: 100%;   
+    background-color: #74befc;
+    width: 100%;
+    max-width:80rem;   
 }
 
 #list-items:nth-child(even){
@@ -233,12 +244,13 @@ h1{
 }
 
 
-@media screen and (max-width: 680px) {
+@media screen and (max-width: 880px) {
     #list-items{
-    text-align: center;
+    text-align: left;
     padding-bottom: 2.5rem;
     display: block;
     padding-right: 2.5rem;
+    max-width:70rem; 
 }
 
 .names{
