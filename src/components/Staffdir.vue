@@ -196,15 +196,8 @@ h1{
     margin:0 auto;
     width: auto;
     background-color: #74befc;
-   
-}
-
-/* NEW */
-
-.container{
-    /* display: flex; */
-    
-    
+    margin-left: 20rem;
+    max-width:80rem; 
 }
 
 
@@ -236,6 +229,7 @@ h1{
     display: flex;
     background-color: #74befc;
     width: 100%;
+    margin-left: 20rem;
     max-width:80rem;   
 }
 
@@ -246,10 +240,11 @@ h1{
 
 @media screen and (max-width: 880px) {
     #list-items{
-    text-align: left;
+    text-align: center;
     padding-bottom: 2.5rem;
     display: block;
     padding-right: 2.5rem;
+    margin-left: 0rem;
     max-width:70rem; 
 }
 
@@ -270,6 +265,9 @@ h1{
     width: auto;
     border-radius: 0.9rem;
     border:0;
+    padding-left: 0.4rem;
+    padding-right: 0.4rem;
+    outline-color: gray;
 }
 
 input[type=text]{
