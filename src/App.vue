@@ -114,7 +114,13 @@
     float: left;
     padding-left:12rem;
 }
-
+.top-white {
+    background-color: #fff;
+    width: 95.5rem;
+    margin: auto;
+    max-width: 95.5rem;
+    height: 4rem;
+}
 .footer-address-holder a {
     text-decoration: none;
     color: #aed0ba;

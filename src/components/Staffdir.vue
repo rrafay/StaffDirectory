@@ -205,7 +205,7 @@ h1{
     display: flex; 
     flex-direction: column;
     
-    margin-left: 30rem; 
+    margin-left: 20rem; 
      
      
 }
