@@ -88,7 +88,37 @@
     transition: height 0.7s;
     transition-timing-function: ease-in-out;
 }
+.footer-background{
 
+  box-shadow: 0 0.1rem 0.5rem 0.1rem #474747;
+    border-top: none;
+        background-color: #015a20;
+    
+    height: 19.5rem;
+    width:auto;
+}
+
+.nine-fifty {
+    width: 95.5rem;
+    min-width: 95.5rem;
+    max-width: 95.5rem;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.footer-address-holder {
+    padding-top: 1.4rem;
+    color: #aed0ba;
+    font-size: 1.2rem;
+    line-height: 2rem;
+    float: left;
+    padding-left:12rem;
+}
+
+.footer-address-holder a {
+    text-decoration: none;
+    color: #aed0ba;
+}
 
 .main-logo{
     width: 10rem;
@@ -99,9 +129,6 @@
     padding-right: 1.5rem;
     transition: width 0.7s, padding-right 0.7s;
     transition-timing-function: linear;
-}
-.footer-address-holder{
-  padding-left:12rem;
 }
 
 .site-header {
