@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <h1 class="heading">Directory</h1>
-    <hr class="line">
+    
 
     <Staffdir />
   </div>

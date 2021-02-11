@@ -194,10 +194,10 @@ h1{
     padding-bottom: 4rem;
     padding-left: 4rem;
     margin:0 auto;
-    width: auto;
-    background-color: #74befc;
-    margin-left: 20rem;
-    max-width:80rem; 
+    background-color: #e5e5e5;
+    margin-left: auto;
+    margin-right: auto;
+    max-width:80%;  
 }
 
 
@@ -213,7 +213,7 @@ h1{
 .images{
     width: 15rem;
     height: auto;
-    /* padding-bottom: 2rem; */
+    
    
 }
 
@@ -227,10 +227,11 @@ h1{
     text-align: left;
     margin-top: 1.5rem;
     display: flex;
-    background-color: #74befc;
-    width: 100%;
-    margin-left: 20rem;
-    max-width:80rem;   
+    background-color: #e5e5e5;
+    /* width: 100%; */
+    margin-left: auto;
+    margin-right: auto;
+    max-width:80%;   
 }
 
 #list-items:nth-child(even){

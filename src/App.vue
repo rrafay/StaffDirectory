@@ -1,12 +1,54 @@
 <template>
+
   <div id="app">
-    <div id="nav">
+    <div class="site-header closed">
+ <div class="top-white">
+ <div class="logo-menu">
+  <div class="header-logo"><a href="http://www.marywood.edu"><img alt="marywood university logo" class="main-logo" src="@/assets/mulogo.svg"></a></div>
+<div id="nav"><router-link to="/">Staff</router-link>  <router-link to="/departments">Departments</router-link></div>
+  
+ </div> 
+ 
+     
+ </div>
+ 
+ 
+</div>
+<br>
+<br>
+<br>
+<br>
+    <!-- <div id="nav">
       <router-link to="/">Staff</router-link> |
       
       <router-link to="/departments">Departments</router-link>
-    </div>
+    </div> -->
     <router-view/>
+
+    <br>
+    <br>
+    <br>
+    <br>
+
+<div class="footer-background" style="position:relative;z-index:1;margin-top:-1rem">       
+<div class="footer-first-line nine-fifty">       
+<div class="footer-address-holder">
+<a href="https://www.google.com/maps/place/2300+Adams+Ave,+Scranton,+PA+18509/@41.4334254,-75.639425,17z/data=!3m1!4b1!4m5!3m4!1s0x89c4d96971825429:0x2e50c0bd7bd47986!8m2!3d41.4334254!4d-75.6372363">
+2300 Adams Avenue Scranton, PA 18509 <br>
+</a>
+
+<a href="http://www.marywood.edutel:5703486211">
+570-348-6211
+</a>
+
+| toll free: 1-TO-MARYWOOD <br>
+
   </div>
+  
+</div>
+</div>
+  </div>
+  
 </template>
 
 <style>
@@ -17,19 +59,77 @@
   -moz-osx-font-smoothing: grayscale;
   text-align: center;
   color: #2c3e50;
+  
 }
 
 #nav {
-  padding: 30px;
+  padding: 1.5rem;
+  float: left;
+  
   
 }
 
 #nav a {
+  padding-left: 2rem;
+  padding-right: 2rem;
   font-weight: bold;
   color: #1a5632;
+  border-bottom: 3px solid #1a5632;
+  text-decoration: none;
+    
 }
 
 #nav a.router-link-exact-active {
   color: #f5a800 ;
+  border-bottom: 3px solid #f5a800;
+}
+.closed {
+    height: 4rem;
+    transition: height 0.7s;
+    transition-timing-function: ease-in-out;
+}
+.footer-background{
+
+  box-shadow: 0 0.1rem 0.5rem 0.1rem #474747;
+    border-top: none;
+        background-color: #015a20;
+    
+    height: 19.5rem;
+    width:auto;
+}
+.footer-address-holder {
+    padding-top: 1.4rem;
+    color: #aed0ba;
+    font-size: 1.2rem;
+    line-height: 2rem;
+    float: left;
+}
+
+.footer-address-holder a {
+    text-decoration: none;
+    color: #aed0ba;
+}
+
+.main-logo{
+    width: 10rem;
+    float: left;
+    margin: 0;
+    padding-top: 0.5rem;
+    padding-left: 1rem;
+    padding-right: 1.5rem;
+    transition: width 0.7s, padding-right 0.7s;
+    transition-timing-function: linear;
+}
+
+.site-header {
+    position: fixed;
+    width: 100%;
+    z-index: 2001;
+    top: 0;
+    left: 0;
+    overflow: hidden;
+    border-bottom: 0.3rem solid #015a20;
+    box-shadow: 0 0.1rem 0.5rem 0.1rem #474747;
+    background-color: #fff;
 }
 </style>
