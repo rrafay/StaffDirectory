@@ -125,7 +125,14 @@
     text-decoration: none;
     color: #aed0ba;
 }
-
+@media screen and (max-width: 530px) {
+  #nav {
+  padding: 0.5rem;
+  float: center;
+  
+  
+}
+}
 .main-logo{
     width: 10rem;
     float: left;

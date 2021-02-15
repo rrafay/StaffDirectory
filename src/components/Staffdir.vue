@@ -239,7 +239,7 @@ h1{
 }
 
 
-@media screen and (max-width: 880px) {
+@media screen and (max-width: 900px) {
     #list-items{
     text-align: center;
     padding-bottom: 2.5rem;
@@ -252,8 +252,6 @@ h1{
 .names{
     display: block;
    margin-left: 0.5rem;
-     
-     
 }
 
 
@@ -263,12 +261,20 @@ h1{
 #search-site {
     height: 1.5rem;
     background-color: #eeeeee ;
-    width: auto;
+    width: 17rem;
     border-radius: 0.9rem;
     border:0;
     padding-left: 0.4rem;
     padding-right: 0.4rem;
     outline-color: gray;
+}
+
+#search-site:hover{
+    box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+}
+#search-site:active, #search-site:focus{
+    outline: none;
+    border: none;
 }
 
 input[type=text]{
