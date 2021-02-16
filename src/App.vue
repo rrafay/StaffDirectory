@@ -125,14 +125,7 @@
     text-decoration: none;
     color: #aed0ba;
 }
-@media screen and (max-width: 530px) {
-  #nav {
-  padding: 0.5rem;
-  float: center;
-  
-  
-}
-}
+
 .main-logo{
     width: 10rem;
     float: left;
@@ -155,4 +148,24 @@
     box-shadow: 0 0.1rem 0.5rem 0.1rem #474747;
     background-color: #fff;
 }
+
+@media screen and (max-width: 530px) {
+  #nav {
+  padding: 0.5rem;
+  float: center;
+  
+  
+}
+.footer-background{
+  width: 150%
+}
+.footer-address-holder {
+  padding-left: 0.5rem;
+}
+.main-logo{
+  width:4rem;
+}
+}
+
+
 </style>

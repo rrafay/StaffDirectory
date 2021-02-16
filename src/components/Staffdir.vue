@@ -9,7 +9,7 @@
 
 
      <div id="dropdown" style="padding-bottom:2rem;">
-        <select v-model="selectedValue" @change="onChange($event)">
+        <select class="dropdown-list" v-model="selectedValue" @change="onChange($event)">
             <option value="All Departments">All Departments</option>
             <option v-for="(dept, index) in filtered" :value="dept" :key="index">{{dept}}</option>
             </select>
@@ -217,7 +217,15 @@ h1{
    
 }
 
-
+.dropdown-list{
+    border: 2px solid #1a5632;
+    border-radius: 0.9rem;
+    width: 17rem;
+}
+.dropdown-list:active, .dropdown-list:focus{
+    outline: none;
+    border: 2px solid #f5a800;
+}
 
 #list-parent{
     margin: 0px;
