@@ -13,20 +13,6 @@
             <option value="All Departments">All Departments</option>
             <option v-for="(dept, index) in filtered" :value="dept" :key="index">{{dept}}</option>
             </select>
-            <!-- <div>
-            <ul style="list-style-type: none;">
-            <li v-for="(names, index) in values" :key="index" id="list-items">
-                <img class="images" :src="`${names.PHOTO}`"> 
-                <b>Name: </b>{{names.Last_Name}} , 
-             {{ names.First_Name }} 
-              
-            <b>Department: </b>{{names.Department}}
-            <b>Office: </b>{{names.Office_Location}}
-            <b>Email: </b>{{names.E_Mail}}
-            <b>Title: </b>{{names.Job_Title}}
-            <b>Extension: </b>{{names.Work_Phone}}
-                </li>
-                </ul></div> -->
             
     </div>
 
@@ -154,12 +140,6 @@ if(this.selectedValue == "All Departments"){
 
     },
 
-    // watch:{
-    //     keyword(){
-    //         this.parseDoc()
-    //     }
-    // },
-
 
     created(){
         this.parseDoc()
@@ -262,6 +242,9 @@ h1{
    margin-left: 0.5rem;
 }
 
+#search-site{
+    max-width: 20rem;
+}
 
 
 }
@@ -269,7 +252,7 @@ h1{
 #search-site {
     height: 1.5rem;
     background-color: #eeeeee ;
-    width: 17rem;
+    width: 40rem;
     border-radius: 0.9rem;
     border:0;
     padding-left: 0.4rem;
