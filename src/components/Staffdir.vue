@@ -28,7 +28,7 @@
                <div class="desc">
             <p>{{item.department}}</p>
             <p>{{item.title}}</p>
-            <p><a v-bind:href="`${item.email}`">{{item.email}}</a></p>
+            <p><a v-bind:href="`mailto:${item.email}`">{{item.email}}</a></p>
            <p> <b>{{item.phone}}</b></p>
             <p>{{item.location}}</p>
             </div>
