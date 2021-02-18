@@ -70,7 +70,7 @@ export default {
 
     methods: {
         getNames(){
-            let url = 'http://www.marywood.edu/about/directory/directory-feed.csv'
+            let url = 'https://www.marywood.edu/about/directory/directory-feed.csv'
             Papa.parse(url, {
                 header: true,
                 download:true,
