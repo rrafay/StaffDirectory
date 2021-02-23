@@ -3,7 +3,7 @@
       
       <div 
         class="control">
-    <input type="text" id="search-site" v-model.trim="search" placeholder=" Search" @keyup.prevent="parseDoc()"> </div>
+    <input type="text" id="search-site" v-model.trim="search" placeholder=" Search" @keyup="searchItems()"> </div>
     <br>
     <br>
 
@@ -64,6 +64,7 @@ export default {
       VLazyImage,
       logo: require('@/assets/musearch.svg'),
       info: [],
+      depts:[],
       search: '',
       isVisible: false,
       selectedValue: '',
@@ -97,7 +98,7 @@ if(this.selectedValue == "All Departments"){
         header: true,
         download:true,
         complete: (results) => {
-             const newUsers = results.data.map(item => {
+             const myObjects = results.data.map(item => {
                     const container = {}
                     container.firstName = item.First_Name
                     container.lastName = item.Last_Name
@@ -113,25 +114,26 @@ if(this.selectedValue == "All Departments"){
                     ' ', container.phone, ' ', container.location, ' ', container.title) 
                     return container
                 })
-            if(this.search){
-                
-                // console.log(results.data)
-                // console.log(newUsers)
-                this.info = newUsers.filter(info => info.newAge.toLowerCase().includes(this.search.toLowerCase())) 
-                 
+    this.info = myObjects
+  this.depts = myObjects
 
-            } 
-            
-            
-            else{
-                this.info = newUsers
-            }
             
         
     },
         
 })
 
+    },
+    searchItems(){
+          if(this.search){
+
+                this.info = this.depts.filter(info => info.newAge.toLowerCase().includes(this.search.toLowerCase())) 
+                 
+
+            } 
+            else{
+                this.info = this.depts
+            }
     }
 
 
@@ -143,6 +145,7 @@ if(this.selectedValue == "All Departments"){
 
     created(){
         this.parseDoc()
+        this.searchItems()
     },
 
     computed:{

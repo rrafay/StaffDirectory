@@ -1,8 +1,8 @@
 <template>
     <div class="home">
     <h1 class="heading">Departments</h1>
-    <hr class="line">
-
+    
+<br>
     <Depts />
     </div>
 </template>
