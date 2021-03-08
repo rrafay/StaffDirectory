@@ -92,8 +92,8 @@
 
   box-shadow: 0 0.1rem 0.5rem 0.1rem #474747;
     border-top: none;
-        background-color: #015a20;
-    
+    background-color: #015a20;
+    overflow-x: hidden;
     height: 19.5rem;
     width:auto;
 }
@@ -157,7 +157,8 @@
   
 }
 .footer-background{
-  width: 150%
+  width: 150%;
+  overflow-x: hidden;
 }
 .footer-address-holder {
   padding-left: 0.5rem;

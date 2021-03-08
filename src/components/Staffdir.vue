@@ -1,5 +1,5 @@
 <template>
-  <div class="div" >
+  <div class="div" style="min-height:100vh">
       
       <div 
         class="control">
@@ -10,7 +10,7 @@
 
      <div id="dropdown" style="padding-bottom:2rem;">
         <select class="dropdown-list" v-model="selectedValue" @change="onChange($event)">
-            <option value="All Departments">All Departments</option>
+            <option value="">All Departments</option>
             <option v-for="(dept, index) in filtered" :value="dept" :key="index">{{dept}}</option>
             </select>
             
@@ -42,10 +42,12 @@
 
     </div>
  <div class="container-2" v-if="info == ''">
- 
-     <img :src=logo style="height: 1.8rem; width:auto; position:relative; left:0rem; top:0.5rem;"> <span>No Results Found</span> 
-
+     
  </div>
+ <!-- <div v-if="search !== info">
+     
+     <img :src=logo style="height: 1.8rem; width:auto; position:relative; left:0rem; top:0.5rem;"> <span>No Results Found</span> 
+</div> -->
   </div>
 </template>
 
@@ -171,7 +173,7 @@ h1{
 }
 
 
-.container-2{
+/* .container-2{
     
     padding-top: 3rem;
     padding-bottom: 4rem;
@@ -181,8 +183,23 @@ h1{
     margin-left: auto;
     margin-right: auto;
     max-width:80%;  
+} */
+.container-2 {
+  border: 1rem solid #f3f3f3; /* Light grey */
+  border-top: 1rem solid #1a5632; /* Blue */
+  border-radius: 50%;
+  margin:0 auto;
+  width: 3rem;
+  height: 3rem;
+  margin-left: auto;
+  margin-right: auto;
+  animation: spin 2s linear infinite;
 }
 
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
 
 .names{
     display: flex; 
