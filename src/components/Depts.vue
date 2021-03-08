@@ -106,11 +106,13 @@ a{
     color: #27834b ;
 }
 .table-content{
+    
     text-align:left;
     padding-left: 5rem;
 }
 th {
   border-bottom: 1px solid #e5e5e5;
+  
 }
 
 

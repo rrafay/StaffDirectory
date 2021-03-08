@@ -82,7 +82,7 @@ onChange(event) {
 if(event.target.value == this.selectedValue){
  this.info = this.info.filter(info => info.department === this.selectedValue)
  
-if(this.selectedValue == "All Departments"){
+if(this.selectedValue == ""){
     this.parseDoc()
 }
 
