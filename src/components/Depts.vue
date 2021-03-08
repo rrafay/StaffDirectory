@@ -21,7 +21,7 @@
     <br>
     
 
-        <table class="table-content" style="width:100%">
+        <table class="table-content" style="max-width:120rem">
   <tr>
     <th><h2>Department</h2></th>
     <th><h2>Building</h2></th>
