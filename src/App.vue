@@ -112,7 +112,7 @@
     font-size: 1.2rem;
     line-height: 2rem;
     float: left;
-    padding-left:12rem;
+    
 }
 .top-white {
     background-color: #fff;
@@ -162,11 +162,11 @@
   height: 12rem;
 }
 .footer-address-holder {
-  margin-left: 5rem;
+  margin-left: 2rem;
 }
 .main-logo{
   width:6.5rem;
-      height: 2rem;
+    height: 2rem;
     padding-right: 0.3rem;
     padding-left: 0.1rem;
 }
