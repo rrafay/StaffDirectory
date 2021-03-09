@@ -11,7 +11,7 @@
         
         
         </div>   -->
-<div class="div">
+<div class="div" style="min-height: 100vh">
 <div 
         class="control">
     <input type="text" id="search-site" v-model.trim="search" placeholder=" Search" @keyup.prevent="searchItems()"> </div>
@@ -23,18 +23,18 @@
 
         <table class="table-content" style="max-width:120rem; margin:auto">
   <tr>
-    <th><h2>Department</h2></th>
-    <th><h2>Building</h2></th>
-    <th><h2>Email</h2></th>
-    <th><h2>Phone</h2></th>
+    <th style="width:40rem;"><h2>Department</h2></th>
+    <th style="width:40rem;"><h2>Building</h2></th>
+    <th style="width:20rem;"><h2>Email</h2></th>
+    <th style="width:20rem;"><h2>Phone</h2></th>
     
   </tr>
  
   <tr v-for="(names, index) in name" :key="index">
-    <td > <h4><b> <a :href="`https://www.marywood.edu${names.deptUrl}`"> {{names.departmentName}}</a></b></h4></td>
-    <td>{{names.building}}</td>
-    <td> <p><a v-bind:href="`mailto:${names.email}`">{{names.email}}</a></p></td>
-    <td>{{names.phoneNumber}}</td>
+    <td style="width:40rem;"> <h4><b> <a :href="`https://www.marywood.edu${names.deptUrl}`"> {{names.departmentName}}</a></b></h4></td>
+    <td style="width:40rem;">{{names.building}}</td>
+    <td style="width:20rem;"> <p><a v-bind:href="`mailto:${names.email}`">{{names.email}}</a></p></td>
+    <td style="width:20rem;">{{names.phoneNumber}}</td>
   </tr>
  
 </table>

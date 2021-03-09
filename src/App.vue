@@ -159,12 +159,16 @@
 .footer-background{
   width: 150%;
   overflow-x: hidden;
+  height: 12rem;
 }
 .footer-address-holder {
-  padding-left: 0.5rem;
+  margin-left: 5rem;
 }
 .main-logo{
-  width:4rem;
+  width:6.5rem;
+      height: 2rem;
+    padding-right: 0.3rem;
+    padding-left: 0.1rem;
 }
 }
 

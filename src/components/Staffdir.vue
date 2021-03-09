@@ -3,18 +3,27 @@
       
       <div 
         class="control">
-    <input type="text" id="search-site" v-model.trim="search" placeholder=" Search" @keyup="searchItems()"> </div>
-    <br>
-    <br>
-
-
-     <div id="dropdown" style="padding-bottom:2rem;">
+    <input type="text" id="search-site" v-model.trim="search" placeholder=" Search" @keyup="searchItems()">
+    
+    
         <select class="dropdown-list" v-model="selectedValue" @change="onChange($event)">
             <option value="">All Departments</option>
             <option v-for="(dept, index) in filtered" :value="dept" :key="index">{{dept}}</option>
             </select>
             
-    </div>
+    
+     </div>
+    <br>
+    <br>
+
+
+     <!-- <div id="dropdown" style="padding-bottom:2rem;">
+        <select class="dropdown-list" v-model="selectedValue" @change="onChange($event)">
+            <option value="">All Departments</option>
+            <option v-for="(dept, index) in filtered" :value="dept" :key="index">{{dept}}</option>
+            </select>
+            
+    </div> -->
 
 <br>
     <div id="hide" class="container">
@@ -244,19 +253,25 @@ h1{
 
 #list-items:nth-child(even){
     background-color: white;
+    
 }
+
 
 
 @media screen and (max-width: 900px) {
     #list-items{
     text-align: center;
     padding-bottom: 2.5rem;
+    margin-top: none;
     display: block;
     padding-right: 2.5rem;
     margin-left: 0rem;
     max-width:70rem; 
 }
 
+.images:nth-child(odd){
+margin-top: 2rem;
+}
 .names{
     display: block;
    margin-left: 0.5rem;
@@ -264,6 +279,7 @@ h1{
 
 #search-site{
     max-width: 20rem;
+    margin-bottom: 1rem;
 }
 
 
@@ -272,12 +288,13 @@ h1{
 #search-site {
     height: 1.5rem;
     background-color: #eeeeee ;
-    width: 40rem;
+    width: 20rem;
     border-radius: 0.9rem;
     border:0;
     padding-left: 0.4rem;
     padding-right: 0.4rem;
     outline-color: gray;
+    margin-right: 1rem;
 }
 
 #search-site:hover{
@@ -290,7 +307,7 @@ h1{
 
 input[type=text]{
     background-image: url('data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjQiIGhlaWdodD0iMjQiIHhtbG5zPSJodHRwOi8vd3d3LnczLm9yZy8yMDAwL3N2ZyIgZmlsbC1ydWxlPSJldmVub2RkIiBjbGlwLXJ1bGU9ImV2ZW5vZGQiPjxwYXRoIGQ9Ik0xNS44NTMgMTYuNTZjLTEuNjgzIDEuNTE3LTMuOTExIDIuNDQtNi4zNTMgMi40NC01LjI0MyAwLTkuNS00LjI1Ny05LjUtOS41czQuMjU3LTkuNSA5LjUtOS41IDkuNSA0LjI1NyA5LjUgOS41YzAgMi40NDItLjkyMyA0LjY3LTIuNDQgNi4zNTNsNy40NCA3LjQ0LS43MDcuNzA3LTcuNDQtNy40NHptLTYuMzUzLTE1LjU2YzQuNjkxIDAgOC41IDMuODA5IDguNSA4LjVzLTMuODA5IDguNS04LjUgOC41LTguNS0zLjgwOS04LjUtOC41IDMuODA5LTguNSA4LjUtOC41eiIvPjwvc3ZnPg==');
-    background-position:38.5rem;
+    background-position:18.8rem;
     background-repeat: no-repeat;
     background-size: 1.1rem;
     
