@@ -167,7 +167,7 @@ if(this.selectedValue == ""){
         //     // console.log(response.data.ip)
         //     this.ipadrs = response.data.ip
         // })
-       axios.get('https://10.17.18.112/services/access-test.php').then(response => {
+       axios.get('http://10.17.18.112/services/access-test.php').then(response => {
            console.log(response.data)
            if(response.data == 1){
                this.communication = true
