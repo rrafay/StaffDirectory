@@ -31,7 +31,7 @@
         margin:0;
         padding:0;" id = "list-parent">
         <li v-for="(item, index) in info" :key="index" id="list-items">
-            <v-lazy-image v-if="ipadrs == '127.1.0.1'" class="images" :src="`${item.pics}`" /> 
+            <v-lazy-image v-if="ipadrs.startsWith('192.' || '10.' || '100.' || '9.')" class="images" :src="`${item.pics}`" /> 
            <div class="names"> 
                <h1><b> {{ item.displayName }}</b></h1> 
                <div class="desc">
@@ -64,7 +64,7 @@
 
 import Papa from "papaparse"
 import VLazyImage from "v-lazy-image"
-import ip from "ip"
+import axios from "axios"
 
 export default {
     name: 'Staffdir',
@@ -155,12 +155,20 @@ if(this.selectedValue == ""){
 
     },
 
+ 
+
+   
+
 
     created(){
         this.parseDoc()
         this.searchItems()
-        // this.ipadrs = ip.address()
-        console.log(ip.address())
+        axios.get('https://api.my-ip.io/ip.json').then(response => {
+            // console.log(response.data.ip)
+            this.ipadrs = response.data.ip
+        })
+       
+
     },
 
     computed:{
