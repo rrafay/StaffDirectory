@@ -50,13 +50,13 @@
    
 
     </div>
- <div class="container-2" v-if="info == ''">
+ <div class="container-2" v-if="info == search">
      
  </div>
- <!-- <div v-if="search !== info">
+ <div v-if="info == 0">
      
      <img :src=logo style="height: 1.8rem; width:auto; position:relative; left:0rem; top:0.5rem;"> <span>No Results Found</span> 
-</div> -->
+</div>
   </div>
 </template>
 
@@ -163,18 +163,12 @@ if(this.selectedValue == ""){
     created(){
         this.parseDoc()
         this.searchItems()
-        // axios.get('https://api.my-ip.io/ip.json').then(response => {
-        //     // console.log(response.data.ip)
-        //     this.ipadrs = response.data.ip
-        // })
-       axios.get('http://10.17.18.112/services/access-test.php').then(response => {
+       axios.get('https://vpncheater.marywood.edu/services/access-test.php').then(response => {
            console.log(response.data)
            if(response.data == 1){
                this.communication = true
            }
-            
-            // make a variable to return true, in 
-            // this.ipadrs = response.data.ip
+
         })
 
     },
@@ -214,8 +208,8 @@ h1{
     max-width:80%;  
 } */
 .container-2 {
-  border: 1rem solid #f3f3f3; /* Light grey */
-  border-top: 1rem solid #1a5632; /* Blue */
+  border: 1rem solid #f3f3f3;
+  border-top: 1rem solid #1a5632; 
   border-radius: 50%;
   margin:0 auto;
   width: 3rem;
@@ -265,7 +259,6 @@ h1{
     margin-top: 1.5rem;
     display: flex;
     background-color: #e5e5e5;
-    /* width: 100%; */
     margin-left: auto;
     margin-right: auto;
     max-width:80%;   
