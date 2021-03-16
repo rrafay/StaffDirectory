@@ -164,7 +164,7 @@ if(this.selectedValue == ""){
         this.parseDoc()
         this.searchItems()
        axios.get('https://vpncheater.marywood.edu/services/access-test.php').then(response => {
-           console.log(response.data)
+           //console.log(response.data)
            if(response.data == 1){
                this.communication = true
            }

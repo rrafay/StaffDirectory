@@ -149,7 +149,7 @@
     background-color: #fff;
 }
 
-@media screen and (max-width: 530px) {
+@media screen and (max-width: 900px) {
   #nav {
   padding: 0.5rem;
   float: center;
@@ -171,6 +171,7 @@
     padding-left: 0.1rem;
 }
 }
+
 
 
 </style>
