@@ -1,16 +1,5 @@
 <template>
-    <!-- 
-        
-        <div v-for="(names, index) in name" :key="index">
-            <p><a v-bind:href="`marywood.edu${names.deptUrl}`"> {{names.departmentName}}</a></p>
-            {{names.building}}
-            <p><a v-bind:href="`${names.email}`">{{names.email}}</a></p>
-            {{names.phoneNumber}}
-        
-
-        
-        
-        </div>   -->
+    
 <div class="div" style="min-height: 100vh">
 <div 
         class="control">

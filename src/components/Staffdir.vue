@@ -17,14 +17,6 @@
     <br>
 
 
-     <!-- <div id="dropdown" style="padding-bottom:2rem;">
-        <select class="dropdown-list" v-model="selectedValue" @change="onChange($event)">
-            <option value="">All Departments</option>
-            <option v-for="(dept, index) in filtered" :value="dept" :key="index">{{dept}}</option>
-            </select>
-            
-    </div> -->
-
 <br>
     <div id="hide" class="container">
     <ul v-if="info" style="list-style-type: none; 
@@ -38,7 +30,7 @@
             <p>{{item.department}}</p>
             <p>{{item.title}}</p>
             <p><a v-bind:href="`mailto:${item.email}`">{{item.email}}</a></p>
-           <p> <b>{{item.phone}}</b></p>
+           <p v-if="!noNamesList.includes(item.prefName)"> <b>{{item.phone}}</b></p>
             <p>{{item.location}}</p>
             </div>
             
@@ -81,7 +73,11 @@ export default {
       isVisible: false,
       selectedValue: '',
       values:[],
-      communication : ''
+      communication : '',
+      noNamesList:[
+          'Mark Pitely',
+      'Abdul Rafay Mudassar'
+      ]
     };
   },
 
@@ -164,7 +160,6 @@ if(this.selectedValue == ""){
         this.parseDoc()
         this.searchItems()
        axios.get('https://vpncheater.marywood.edu/services/access-test.php').then(response => {
-           //console.log(response.data)
            if(response.data == 1){
                this.communication = true
            }
@@ -176,7 +171,9 @@ if(this.selectedValue == ""){
     computed:{
         filtered(){
             return[...new Set(this.info.map(({department}) => department).sort())]
-        }
+        },
+
+      
     }
 };
 
@@ -195,18 +192,6 @@ h1{
     color: #1a5632;
 }
 
-
-/* .container-2{
-    
-    padding-top: 3rem;
-    padding-bottom: 4rem;
-    padding-left: 4rem;
-    margin:0 auto;
-    background-color: #e5e5e5;
-    margin-left: auto;
-    margin-right: auto;
-    max-width:80%;  
-} */
 .container-2 {
   border: 1rem solid #f3f3f3;
   border-top: 1rem solid #1a5632; 
@@ -271,7 +256,7 @@ h1{
 
 
 
-@media screen and (max-width: 900px) {
+@media screen and (max-width: 950px) {
     #list-items{
     text-align: center;
     padding-bottom: 2.5rem;
