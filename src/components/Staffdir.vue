@@ -113,14 +113,16 @@ if(this.selectedValue == ""){
                     container.lastName = item.Last_Name
                     container.department = item.Department
                     container.email = item.E_Mail
+                    container.emailDecoy = item.E_Mail.slice(0, item.E_Mail.indexOf("@"))
                     container.phone = item.Work_Phone
                     container.title = item.Job_Title
                     container.location = item.Office_Location
+                    container.locDecoy = item.Office_Location.split("Marywood").pop()
                     container.displayName = item.Display_Name
                     container.prefName = item.Preferred_Name
                     container.pics = item.PHOTO
-                    container.newAge = container.firstName.concat(' ', container.department, ' ', container.prefName, ' ', container.email, ' ',
-                    ' ', container.phone, ' ', container.location, ' ', container.title) 
+                    container.newAge = container.firstName.concat(' ', container.department, ' ', container.prefName, ' ',
+                    ' ', container.phone, ' ', container.locDecoy, ' ', container.title, ' ', container.emailDecoy) 
                     return container
                 })
     this.info = myObjects
