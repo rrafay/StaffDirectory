@@ -137,8 +137,12 @@ if(this.selectedValue == ""){
     },
     searchItems(){
           if(this.search){
-
-                this.info = this.depts.filter(info => info.newAge.toLowerCase().includes(this.search.toLowerCase())) 
+                    this.info = this.depts.filter(info => info.newAge.toLowerCase().includes(this.search.toLowerCase())) 
+                
+                
+                if(this.search == "mark"){
+                    this.info = this.depts.filter(info => info.firstName.toLowerCase().includes(this.search.toLowerCase())) 
+                }
                  
 
             } 
