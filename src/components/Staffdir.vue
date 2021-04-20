@@ -1,6 +1,6 @@
 <template>
   <div class="div" style="min-height:100vh">
-      
+
       <div 
         class="control">
     <input type="text" id="search-site" v-model.trim="search" placeholder=" Search" @keyup="searchItems()">
@@ -11,6 +11,7 @@
             <option v-for="(dept, index) in filtered" :value="dept" :key="index">{{dept}}</option>
             </select>
             
+            <button id="edit-button"><a href="http://www.marywood.edu/forms/frevvo?id=Directory" target="_blank" style="text-decoration:none;color: black;">Edit</a></button>
     
      </div>
     <br>
@@ -193,9 +194,11 @@ if(this.selectedValue == ""){
 p {
    margin: 0px;
    padding: 0px;
+   line-height: 1.25rem;
 }
 h1{
     color: #1a5632;
+    
 }
 
 .container-2 {
@@ -253,6 +256,7 @@ h1{
     margin-left: auto;
     margin-right: auto;
     max-width:80%;   
+    padding: 0.3rem;
 }
 
 #list-items:nth-child(even){
@@ -317,6 +321,11 @@ input[type=text]{
     
 }
 
+#edit-button{
+    background-color: #e5e5e5;
+    margin-left: 2rem;
+    
+}
 
 
 

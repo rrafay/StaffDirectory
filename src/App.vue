@@ -157,7 +157,6 @@
   
 }
 .footer-background{
-  
   overflow-x: hidden;
   height: 12rem;
 }

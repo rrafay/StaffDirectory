@@ -12,18 +12,17 @@
 
         <table class="table-content" style="max-width:120rem; margin:auto">
   <tr>
-    <th style="width:40rem;"><h2>Department</h2></th>
-    <th style="width:40rem;"><h2>Building</h2></th>
+    <th style="width:40rem;"><h2>Department & Location</h2></th>
+    
     <th style="width:20rem;"><h2>Email</h2></th>
     <th style="width:20rem;"><h2>Phone</h2></th>
     
   </tr>
  
   <tr v-for="(names, index) in name" :key="index">
-    <td style="width:40rem;"> <h4><b> <a :href="`https://www.marywood.edu${names.deptUrl}`"> {{names.departmentName}}</a></b></h4></td>
-    <td style="width:40rem;">{{names.building}}</td>
+    <td style="width:40rem;"> <h4><b> <a :href="`https://www.marywood.edu${names.deptUrl}`" target="_blank"> {{names.depts}}</a> |</b>{{names.building}}</h4></td>
     <td style="width:20rem;"> <p><a v-bind:href="`mailto:${names.email}`">{{names.email}}</a></p></td>
-    <td style="width:20rem;">{{names.phoneNumber}}</td>
+    <td style="width:20rem;">{{names.phone}}</td>
   </tr>
  
 </table>
@@ -52,9 +51,18 @@ export default {
                 download:true,
                 
                 complete: (results)=>{
-                    
-                  this.name = results.data
-                  this.depts = results.data
+                  const myObjects = results.data.map(item => {
+                    const container = {}
+                    container.depts = item.departmentName
+                    container.email = item.email
+                    container.building = item.building
+                    container.phone = item.phoneNumber
+                    container.deptUrl = item.deptUrl
+                    container.newValues = container.depts.concat(' ', container.email) 
+                    return container
+                })
+                this.name = myObjects
+                this.depts = myObjects
                   
                 }
             })
@@ -62,7 +70,13 @@ export default {
 
         searchItems(){
               if(this.search){
-                      this.name = this.depts.filter(name => name.departmentName.toLowerCase().includes(this.search.toLowerCase()))
+                      this.name = this.depts.filter(name => name.newValues.toLowerCase().includes(this.search.toLowerCase()))
+                      
+                         if(this.search == "marywood"){
+                      this.name = this.depts.filter(name => name.depts.toLowerCase().includes(this.search.toLowerCase()))
+                      
+                  }
+
                   }
                   else{
                     this.name = this.depts
