@@ -11,7 +11,7 @@
             <option v-for="(dept, index) in filtered" :value="dept" :key="index">{{dept}}</option>
             </select>
             
-            <button id="edit-button"><a href="http://www.marywood.edu/forms/frevvo?id=Directory" target="_blank" style="text-decoration:none;color: black;">Edit</a></button>
+            
     
      </div>
     <br>
@@ -321,11 +321,7 @@ input[type=text]{
     
 }
 
-#edit-button{
-    background-color: #e5e5e5;
-    margin-left: 2rem;
-    
-}
+
 
 
 

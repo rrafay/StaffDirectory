@@ -30,23 +30,28 @@
     <br>
     <br>
 
-<div class="footer-background" style="position:relative;z-index:1;margin-top:-1rem">       
+<div class="footer-background">       
 <div class="footer-first-line nine-fifty">       
 <div class="footer-address-holder">
-<a href="https://www.google.com/maps/place/2300+Adams+Ave,+Scranton,+PA+18509/@41.4334254,-75.639425,17z/data=!3m1!4b1!4m5!3m4!1s0x89c4d96971825429:0x2e50c0bd7bd47986!8m2!3d41.4334254!4d-75.6372363">
-2300 Adams Avenue Scranton, PA 18509 <br>
+<a href="https://www.google.com/maps/place/2300+Adams+Ave,+Scranton,+PA+18509/@41.4334254,-75.639425,17z/data=!3m1!4b1!4m5!3m4!1s0x89c4d96971825429:0x2e50c0bd7bd47986!8m2!3d41.4334254!4d-75.6372363" target="_blank"
+>
+2300 Adams Avenue Scranton, PA 18509 
 </a>
-
-<a href="http://www.marywood.edutel:5703486211">
+<br>
+<a href="http://www.marywood.edutel:5703486211" >
 570-348-6211
 </a>
 
-| toll free: 1-TO-MARYWOOD <br>
+| toll free: 1-TO-MARYWOOD | <br>
+<a href="http://www.marywood.edu/forms/frevvo?id=Directory" target="_blank">Suggest a Change</a>
+
 
   </div>
   
 </div>
+
 </div>
+
   </div>
   
 </template>
@@ -90,12 +95,21 @@
 }
 .footer-background{
 
-  box-shadow: 0 0.1rem 0.5rem 0.1rem #474747;
+    box-shadow: 0 0.1rem 0.5rem 0.1rem #474747;
     border-top: none;
     background-color: #015a20;
     overflow-x: hidden;
-    height: 19.5rem;
+    overflow-y: hidden;
+    height: 4rem;
     width:auto;
+
+    position:fixed;
+    z-index:1;
+    left:0;
+    bottom:0;
+    width:100%;
+    padding-bottom: 0.3rem;
+    
 }
 
 .nine-fifty {
@@ -107,11 +121,11 @@
 }
 
 .footer-address-holder {
-    padding-top: 1.4rem;
+ 
+    padding-top: 0.3rem;
     color: #aed0ba;
-    font-size: 1.2rem;
-    line-height: 2rem;
     float: left;
+    margin-left: 2rem;
     
 }
 .top-white {
@@ -125,6 +139,10 @@
     text-decoration: none;
     color: #aed0ba;
 }
+.footer-address-holder a:hover {
+    color: #f5a800;
+}
+
 
 .main-logo{
     width: 10rem;
@@ -158,7 +176,8 @@
 }
 .footer-background{
   overflow-x: hidden;
-  height: 12rem;
+  height: 3rem;
+  padding-bottom: 2rem;
 }
 .footer-address-holder {
   margin-left: 2rem;
