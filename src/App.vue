@@ -42,8 +42,8 @@
 570-348-6211
 </a>
 
-| toll free: 1-TO-MARYWOOD | <br>
-<a href="http://www.marywood.edu/forms/frevvo?id=Directory" target="_blank">Suggest a Change</a>
+| toll free: 1-TO-MARYWOOD<br>
+<button style="border:2px solid #f5a800; background-color: transparent;"><a href="http://www.marywood.edu/forms/frevvo?id=Directory" target="_blank">Suggest a Change</a></button>
 
 
   </div>
@@ -97,7 +97,7 @@
 
     box-shadow: 0 0.1rem 0.5rem 0.1rem #474747;
     border-top: none;
-    background-color: #015a20;
+    background-color: #474747;
     overflow-x: hidden;
     overflow-y: hidden;
     height: 4rem;
@@ -123,8 +123,8 @@
 .footer-address-holder {
  
     padding-top: 0.3rem;
-    color: #aed0ba;
-    float: left;
+    color: #fff;
+    text-align: center;
     margin-left: 2rem;
     
 }
@@ -137,7 +137,7 @@
 }
 .footer-address-holder a {
     text-decoration: none;
-    color: #aed0ba;
+    color: #fff;
 }
 .footer-address-holder a:hover {
     color: #f5a800;
@@ -180,7 +180,8 @@
   padding-bottom: 2rem;
 }
 .footer-address-holder {
-  margin-left: 2rem;
+  margin-left: -73rem;
+  text-align: center;
 }
 .main-logo{
   width:6.5rem;
