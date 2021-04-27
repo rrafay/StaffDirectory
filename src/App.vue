@@ -176,7 +176,7 @@
 }
 .footer-background{
   overflow-x: hidden;
-  height: 3rem;
+  height: 2.2rem;
   padding-bottom: 2rem;
 }
 .footer-address-holder {
