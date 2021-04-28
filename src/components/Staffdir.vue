@@ -76,8 +76,7 @@ export default {
       values:[],
       communication : '',
       noNamesList:[
-          'Mark Pitely',
-      'Abdul Rafay Mudassar'
+          
       ]
     };
   },
