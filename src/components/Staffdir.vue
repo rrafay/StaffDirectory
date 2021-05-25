@@ -82,6 +82,7 @@ export default {
   },
 
 
+
     methods: {
 
 onChange(event) {
@@ -90,7 +91,8 @@ if(event.target.value == this.selectedValue){
  this.info = this.info.filter(info => info.department === this.selectedValue)
  
 if(this.selectedValue == ""){
-    this.parseDoc()
+    this.parseDoc(),
+    this.parseAuxiliary()
 }
 
 }
@@ -98,16 +100,17 @@ if(this.selectedValue == ""){
 
         
               
-}
+},
 
-,
+
      parseDoc(){
-            let url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTJcy5_CZ5q_ozBQ7Aut6enMp92BoH-AuBTPDtblhE1NViYXMxFAfxW2rXzTs6u9_YhPOOeGv0XXfa8/pub?output=csv"
+            let url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTJcy5_CZ5q_ozBQ7Aut6enMp92BoH-AuBTPDtblhE1NViYXMxFAfxW2rXzTs6u9_YhPOOeGv0XXfa8/pub?gid=0&single=true&output=csv"
         Papa.parse(url, {
         header: true,
         download:true,
         complete: (results) => {
-             const myObjects = results.data.map(item => {
+        
+            const myObjects = results.data.map(item => {
                     const container = {}
                     container.firstName = item.First_Name
                     container.lastName = item.Last_Name
@@ -125,9 +128,9 @@ if(this.selectedValue == ""){
                     ' ', container.phone, ' ', container.locDecoy, ' ', container.title, ' ', container.emailDecoy) 
                     return container
                 })
-    this.info = myObjects
-  this.depts = myObjects
-
+  this.info.push(...myObjects) 
+  this.depts.push(...myObjects)
+        
             
         
     },
@@ -135,19 +138,63 @@ if(this.selectedValue == ""){
 })
 
     },
+
+
+parseAuxiliary(){
+    var files = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTJcy5_CZ5q_ozBQ7Aut6enMp92BoH-AuBTPDtblhE1NViYXMxFAfxW2rXzTs6u9_YhPOOeGv0XXfa8/pub?gid=1654686977&single=true&output=csv"
+    
+    // let url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTJcy5_CZ5q_ozBQ7Aut6enMp92BoH-AuBTPDtblhE1NViYXMxFAfxW2rXzTs6u9_YhPOOeGv0XXfa8/pub?gid=1632407345&single=true&output=csv"
+    
+        Papa.parse(files, {
+        header:true,
+        download:true,
+        skipEmptyLines: true,
+        preview:12,
+        complete:(results) =>{
+            
+            const myObjects = results.data.map(item => {
+                    const container = {}
+               
+                    container.department = item.Department
+                    container.email = item.E_Mail
+                   container.emailDecoy = item.E_Mail.slice(0, item.E_Mail.indexOf("@"))
+                   container.phone = item.Work_Phone
+                    container.title = item.Job_Title
+                   container.location = item.Office_Location
+                   container.locDecoy = item.Office_Location.split("Marywood").pop()
+                    container.displayName = item.Display_Name
+                    
+                    
+                    container.newAge = container.displayName.concat(' ', container.department,
+                    ' ', container.phone, ' ', container.locDecoy, ' ', container.title, ' ', container.emailDecoy) 
+                    return container
+                })
+    this.info.push(...myObjects) 
+  
+        }
+    })
+  
+   
+},
+
+
+
+
     searchItems(){
           if(this.search){
                     this.info = this.depts.filter(info => info.newAge.toLowerCase().includes(this.search.toLowerCase())) 
+                   
                 
                 
                 if(this.search == "mark"){
-                    this.info = this.depts.filter(info => info.firstName.toLowerCase().includes(this.search.toLowerCase())) 
+                    this.info = this.depts.filter(info => info.displayName.toLowerCase().includes(this.search.toLowerCase())) 
                 }
                  
 
             } 
             else{
                 this.info = this.depts
+                
             }
     }
 
@@ -165,6 +212,8 @@ if(this.selectedValue == ""){
     created(){
         this.parseDoc()
         this.searchItems()
+        this.parseAuxiliary()
+    
        axios.get('https://vpncheater.marywood.edu/services/access-test.php').then(response => {
            if(response.data == 1){
                this.communication = true
