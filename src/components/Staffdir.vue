@@ -91,8 +91,8 @@ if(event.target.value == this.selectedValue){
  this.info = this.info.filter(info => info.department === this.selectedValue)
  
 if(this.selectedValue == ""){
-    this.parseDoc(),
-    this.parseAuxiliary()
+    this.parseDoc()
+
 }
 
 }
@@ -104,12 +104,16 @@ if(this.selectedValue == ""){
 
 
      parseDoc(){
-            let url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTJcy5_CZ5q_ozBQ7Aut6enMp92BoH-AuBTPDtblhE1NViYXMxFAfxW2rXzTs6u9_YhPOOeGv0XXfa8/pub?gid=0&single=true&output=csv"
+            let url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTJcy5_CZ5q_ozBQ7Aut6enMp92BoH-AuBTPDtblhE1NViYXMxFAfxW2rXzTs6u9_YhPOOeGv0XXfa8/pub?gid=390357117&single=true&output=csv"
+
+            
+           
+  
         Papa.parse(url, {
         header: true,
         download:true,
+        skipEmptyLines: 'greedy',
         complete: (results) => {
-        
             const myObjects = results.data.map(item => {
                     const container = {}
                     container.firstName = item.First_Name
@@ -125,11 +129,13 @@ if(this.selectedValue == ""){
                     container.prefName = item.Preferred_Name
                     container.pics = item.PHOTO
                     container.newAge = container.firstName.concat(' ', container.department, ' ', container.prefName, ' ',
-                    ' ', container.phone, ' ', container.locDecoy, ' ', container.title, ' ', container.emailDecoy) 
+                    ' ', container.lastName, ' ', container.phone, ' ', container.locDecoy, ' ', container.title, ' ', container.emailDecoy) 
                     return container
                 })
-  this.info.push(...myObjects) 
-  this.depts.push(...myObjects)
+
+    this.info = myObjects
+    this.depts = myObjects
+
         
             
         
@@ -137,47 +143,9 @@ if(this.selectedValue == ""){
         
 })
 
+
+
     },
-
-
-parseAuxiliary(){
-    var files = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTJcy5_CZ5q_ozBQ7Aut6enMp92BoH-AuBTPDtblhE1NViYXMxFAfxW2rXzTs6u9_YhPOOeGv0XXfa8/pub?gid=1654686977&single=true&output=csv"
-    
-    // let url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTJcy5_CZ5q_ozBQ7Aut6enMp92BoH-AuBTPDtblhE1NViYXMxFAfxW2rXzTs6u9_YhPOOeGv0XXfa8/pub?gid=1632407345&single=true&output=csv"
-    
-        Papa.parse(files, {
-        header:true,
-        download:true,
-        skipEmptyLines: true,
-        preview:12,
-        complete:(results) =>{
-            
-            const myObjects = results.data.map(item => {
-                    const container = {}
-               
-                    container.department = item.Department
-                    container.email = item.E_Mail
-                   container.emailDecoy = item.E_Mail.slice(0, item.E_Mail.indexOf("@"))
-                   container.phone = item.Work_Phone
-                    container.title = item.Job_Title
-                   container.location = item.Office_Location
-                   container.locDecoy = item.Office_Location.split("Marywood").pop()
-                    container.displayName = item.Display_Name
-                    
-                    
-                    container.newAge = container.displayName.concat(' ', container.department,
-                    ' ', container.phone, ' ', container.locDecoy, ' ', container.title, ' ', container.emailDecoy) 
-                    return container
-                })
-    this.info.push(...myObjects) 
-  
-        }
-    })
-  
-   
-},
-
-
 
 
     searchItems(){
@@ -186,9 +154,10 @@ parseAuxiliary(){
                    
                 
                 
-                if(this.search == "mark"){
+                if(this.search == "mark" || this.search == "mary"){
                     this.info = this.depts.filter(info => info.displayName.toLowerCase().includes(this.search.toLowerCase())) 
                 }
+
                  
 
             } 
@@ -212,7 +181,6 @@ parseAuxiliary(){
     created(){
         this.parseDoc()
         this.searchItems()
-        this.parseAuxiliary()
     
        axios.get('https://vpncheater.marywood.edu/services/access-test.php').then(response => {
            if(response.data == 1){
