@@ -24,7 +24,9 @@
         margin:0;
         padding:0;" id = "list-parent">
         <li v-for="(item, index) in info" :key="index" id="list-items">
-            <v-lazy-image v-if="communication" class="images" :src="`${item.pics}`" /> 
+            <v-lazy-image v-if="communication" class="images" :src="`${item.pics}`" 
+            
+            /> 
            <div class="names"> 
                <h1><b> {{ item.displayName }}</b></h1> 
                <div class="desc">
@@ -106,9 +108,6 @@ if(this.selectedValue == ""){
      parseDoc(){
             let url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTJcy5_CZ5q_ozBQ7Aut6enMp92BoH-AuBTPDtblhE1NViYXMxFAfxW2rXzTs6u9_YhPOOeGv0XXfa8/pub?gid=390357117&single=true&output=csv"
 
-            
-           
-  
         Papa.parse(url, {
         header: true,
         download:true,
@@ -129,7 +128,7 @@ if(this.selectedValue == ""){
                     container.prefName = item.Preferred_Name
                     container.pics = item.PHOTO
                     container.newAge = container.firstName.concat(' ', container.department, ' ', container.prefName, ' ',
-                    ' ', container.lastName, ' ', container.phone, ' ', container.locDecoy, ' ', container.title, ' ', container.emailDecoy) 
+                    ' ', container.lastName, ' ', container.phone, ' ', container.locDecoy, ' ', container.title) 
                     return container
                 })
 
@@ -244,9 +243,9 @@ h1{
 }
 
 .images{
-    width: 15rem;
+    width: 12rem;
     height: auto;
-    
+
    
 }
 
@@ -338,7 +337,14 @@ input[type=text]{
 }
 
 
+.v-lazy-image {
+  filter: blur(10px);
+  transition: filter 1s ease-out;
+}
 
+.v-lazy-image-loaded {
+  filter: blur(0);
+}
 
 
 </style>
