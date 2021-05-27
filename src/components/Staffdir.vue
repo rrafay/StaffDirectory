@@ -25,7 +25,7 @@
         padding:0;" id = "list-parent">
         <li v-for="(item, index) in info" :key="index" id="list-items">
             <v-lazy-image v-if="communication" class="images" :src="`${item.pics}`" 
-            
+            src-placeholder="https://redcap.marywood.edu/services/person-icon-silhouette-png-0.png"
             /> 
            <div class="names"> 
                <h1><b> {{ item.displayName }}</b></h1> 
@@ -106,7 +106,7 @@ if(this.selectedValue == ""){
 
 
      parseDoc(){
-            let url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTJcy5_CZ5q_ozBQ7Aut6enMp92BoH-AuBTPDtblhE1NViYXMxFAfxW2rXzTs6u9_YhPOOeGv0XXfa8/pub?gid=390357117&single=true&output=csv"
+            let url = "https://docs.google.com/spreadsheets/d/e/2PACX-1vTJcy5_CZ5q_ozBQ7Aut6enMp92BoH-AuBTPDtblhE1NViYXMxFAfxW2rXzTs6u9_YhPOOeGv0XXfa8/pub?gid=0&single=true&output=csv"
 
         Papa.parse(url, {
         header: true,
