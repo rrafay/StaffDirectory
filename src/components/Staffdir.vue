@@ -128,7 +128,7 @@ if(this.selectedValue == ""){
                     container.prefName = item.Preferred_Name
                     container.pics = item.PHOTO
                     container.newAge = container.firstName.concat(' ', container.department, ' ', container.prefName, ' ',
-                    ' ', container.lastName, ' ', container.phone, ' ', container.locDecoy, ' ', container.title) 
+                    ' ', container.lastName, ' ', container.phone, ' ', container.locDecoy, ' ', container.title, ' ', container.emailDecoy) 
                     return container
                 })
 
