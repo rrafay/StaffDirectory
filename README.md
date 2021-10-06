@@ -1,4 +1,7 @@
-# dirprojects
+# Staff Directory for MU
+
+https://directory.marywood.edu
+In the process of being published. 
 
 ## Project setup
 ```
